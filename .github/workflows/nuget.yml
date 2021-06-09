@@ -1,0 +1,25 @@
+name: Publish to nuget
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/version.props
+      - .github/workflows/nuget.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish NuGet
+        uses: brandedoutcast/publish-nuget@v2.5.5
+        with:
+          PROJECT_FILE_PATH: src/Likvido.DbMigrator.EfCore/Likvido.DbMigrator.EfCore.csproj
+          VERSION_FILE_PATH: src/version.props
+          PACKAGE_NAME: Likvido.DbMigrator.EfCore
+          VERSION_REGEX: <Version>(.*)<\/Version>
+          NUGET_KEY: ${{ secrets.NUGET_API_KEY }}

@@ -19,7 +19,7 @@ namespace Likvido.DbMigrator
         where TContext: DbContext
     {
         private ILogger<MigrationsRunner<TContext, TContextFactory>>? _logger;
-        private readonly string _role = "payables-db-migrator";
+        private readonly string _role;
 
         public MigrationsRunner(string role)
         {

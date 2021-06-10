@@ -43,8 +43,9 @@ namespace Likvido.Payables.Services.Data
                 optionsBuilder.UseLoggerFactory(_loggerFactory);
             }
             var options = optionsBuilder
-                .UseSqlServer(GetConfiguration(_settingsPath).GetConnectionString(connectionStringName), opts =>
-                opts.CommandTimeout((int)TimeSpan.FromHours(1).TotalSeconds)
+                .UseSqlServer(
+                    GetConfiguration(_settingsPath).GetConnectionString(connectionStringName),
+                    opts => opts.CommandTimeout((int)TimeSpan.FromHours(1).TotalSeconds)
                 .EnableRetryOnFailure()
                 .MigrationsAssembly(migrationsAssembly))
                 .Options;

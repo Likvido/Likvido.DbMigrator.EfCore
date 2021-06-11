@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Likvido.Extensions.Logging;
-using Likvido.Payables.Services.Data;
 using Likvido.Robots;
 using Microsoft.ApplicationInsights;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace Likvido.DbMigrator
+namespace Likvido.DbMigrator.EfCore
 {
     public class MigrationsRunner<TContext, TContextFactory>
         where TContextFactory : IDesignTimeDbContextFactory<TContext>

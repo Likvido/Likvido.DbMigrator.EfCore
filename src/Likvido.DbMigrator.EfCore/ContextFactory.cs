@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Likvido.Payables.Services.Data
+namespace Likvido.DbMigrator.EfCore
 {
     public class ContextFactory<TContext> where TContext : DbContext
     {

@@ -39,7 +39,7 @@ namespace Likvido.DbMigrator.EfCore
             }
             catch (Exception e)
             {
-                Log.Fatal("Set up failed", e);
+                Log.Fatal(e, "Set up failed");
             }
             finally
             {
@@ -60,7 +60,7 @@ namespace Likvido.DbMigrator.EfCore
                     }
                     else
                     {
-                        Log.Fatal(message, ex);
+                        Log.Fatal(ex, message);
                     }
                 })
                 .SetConfigureServices(Configure)

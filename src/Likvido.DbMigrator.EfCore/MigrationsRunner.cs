@@ -40,6 +40,7 @@ namespace Likvido.DbMigrator.EfCore
             catch (Exception e)
             {
                 Log.Fatal(e, "Set up failed");
+                throw;
             }
             finally
             {

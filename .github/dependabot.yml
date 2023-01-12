@@ -5,6 +5,6 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: nuget
-    directory: /src/Likvido.DbMigrator.EfCore
+    directory: /
     schedule:
       interval: daily

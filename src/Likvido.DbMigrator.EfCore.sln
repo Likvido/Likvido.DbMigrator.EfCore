@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Likvido.DbMigrator.EfCore",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BE8F196C-945E-4B16-A0B3-D974A09758D8}"
 	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\nuget.yml = ..\.github\workflows\nuget.yml
 		..\README.md = ..\README.md
 		version.props = version.props
 		..\.gitignore = ..\.gitignore
 		..\.gitattributes = ..\.gitattributes
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{D726D989-1F86-4012-AC36-0149DA6964CF}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\nuget.yml = ..\.github\workflows\nuget.yml
 	EndProjectSection
 EndProject
 Global
@@ -30,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C5E96FD-06B4-495B-9ACF-6093B0469BD2}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D726D989-1F86-4012-AC36-0149DA6964CF} = {BE8F196C-945E-4B16-A0B3-D974A09758D8}
 	EndGlobalSection
 EndGlobal

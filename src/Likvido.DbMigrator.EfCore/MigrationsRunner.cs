@@ -95,7 +95,7 @@ namespace Likvido.DbMigrator.EfCore
         protected virtual async Task Execute(IServiceProvider services)
         {
             var contextFactory = ActivatorUtilities.CreateInstance<TContextFactory>(services);
-            var context = contextFactory.CreateDbContext(new string[0]);
+            var context = contextFactory.CreateDbContext(Array.Empty<string>());
             var db = context.Database;
 
             var pendingMigrations = (await db.GetPendingMigrationsAsync()).ToList();

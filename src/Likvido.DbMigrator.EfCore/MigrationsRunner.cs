@@ -100,7 +100,14 @@ namespace Likvido.DbMigrator.EfCore
 
             var pendingMigrations = (await db.GetPendingMigrationsAsync()).ToList();
             pendingMigrations.Insert(0, "Pending migrations:");
-            _logger.LogInformation(string.Join($"{Environment.NewLine}", pendingMigrations.ToArray()));
+            if (_logger != null)
+            {
+                _logger.LogInformation(string.Join($"{Environment.NewLine}", pendingMigrations.ToArray()));
+            }
+            else
+            {
+                Log.Information(string.Join($"{Environment.NewLine}", pendingMigrations.ToArray()));
+            }
 
             await db.MigrateAsync();
         }

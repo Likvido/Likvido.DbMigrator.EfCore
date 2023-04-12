@@ -1,4 +1,4 @@
-# Likvido.DbMigrator.EfCore [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/likvido/Likvido.DbMigrator.EfCore/Publish%20to%20nuget)](https://github.com/Likvido/Likvido.DbMigrator.EfCore/actions?query=workflow%3A%22Publish+to+nuget%22) [![Nuget](https://img.shields.io/nuget/v/Likvido.DbMigrator.EfCore)](https://www.nuget.org/packages/Likvido.DbMigrator.EfCore/)
+# Likvido.DbMigrator.EfCore ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Likvido/Likvido.DbMigrator.EfCore/nuget.yml) [![Nuget](https://img.shields.io/nuget/v/Likvido.DbMigrator.EfCore)](https://www.nuget.org/packages/Likvido.DbMigrator.EfCore/)
 Should be used to simplify the process of applying migrations
 # Usage
 ## Run as a job

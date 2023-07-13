@@ -9,7 +9,7 @@
   <Import Project="$(ProjectDir)../version.props" />
 
   <ItemGroup>
-    <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.0.6" />
+    <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.0.7" />
     <PackageReference Include="Likvido.Extensions.Logging" Version="1.0.1" />
     <PackageReference Include="Likvido.Robots" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />

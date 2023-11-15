@@ -9,12 +9,12 @@
   <Import Project="$(ProjectDir)../version.props" />
 
   <ItemGroup>
-    <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.0.9" />
+    <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.0.10" />
     <PackageReference Include="Likvido.Extensions.Logging" Version="1.0.1" />
-    <PackageReference Include="Likvido.Robots" Version="2.2.0" />
+    <PackageReference Include="Likvido.Robots" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="7.0.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
     <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />

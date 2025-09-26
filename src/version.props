@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <Version>2.0.15</Version>
+    <Version>2.0.16</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Likvido/Likvido.DbMigrator.EfCore</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

@@ -23,5 +23,7 @@ public class MigrationEngine<TContext, TContextFactory>(
         logger.LogInformation(string.Join($"{Environment.NewLine}", pendingMigrations.ToArray()));
 
         await context.Database.MigrateAsync(cancellationToken: cancellationToken);
+
+        logger.LogInformation("Migrations successfully applied.");
     }
 }

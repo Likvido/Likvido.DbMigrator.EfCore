@@ -8,6 +8,11 @@ on:
       - src/version.props
       - .github/workflows/nuget.yml
 
+# The job only checks out the repository and pushes the package to nuget.org, which is authenticated
+# with NUGET_API_KEY rather than the job token, so read access to the contents is all it needs.
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v6

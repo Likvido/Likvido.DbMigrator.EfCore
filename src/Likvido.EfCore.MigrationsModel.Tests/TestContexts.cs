@@ -1,7 +1,7 @@
-using Likvido.DbMigrator.EfCore;
+using Likvido.EfCore.MigrationsModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace Likvido.DbMigrator.EfCore.Tests;
+namespace Likvido.EfCore.MigrationsModel.Tests;
 
 public class Thing
 {

@@ -39,7 +39,17 @@ schema for the length of the rollout. The fix is to make every schema change wor
 3. Removals run the cycle backwards: stop using it, deploy, then drop it.
 
 EF6 does this with two contexts, the base one being the migrations model. With one EF Core context, use
-`UseMigrationsModel()` in the design-time factory and gate the ignore on `IsMigrationsModel()`:
+`UseMigrationsModel()` in the design-time factory and gate the ignore on `IsMigrationsModel()`.
+
+Both live in **`Likvido.EfCore.MigrationsModel`**, which depends on nothing but EF Core. Reference it from
+the project that holds the `DbContext` — the gate has to be written there, and that project cannot take
+`Likvido.DbMigrator.EfCore`'s dependency on `Likvido.Robot`. A migrator project gets it transitively.
+
+```
+Likvido.Whatever.Database   -> Likvido.EfCore.MigrationsModel     (the gate)
+Likvido.Whatever.DbMigrator -> Likvido.DbMigrator.EfCore          (which depends on it)
+```
+
 
 ```csharp
 // The context - one class, two models.

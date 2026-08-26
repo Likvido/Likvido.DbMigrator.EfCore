@@ -1,9 +1,8 @@
 using System;
-using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Likvido.DbMigrator.EfCore;
+namespace Likvido.EfCore.MigrationsModel;
 
 /// <summary>
 /// Expand/contract support: lets one <see cref="DbContext"/> class build a <em>complete</em> model on the
@@ -49,7 +48,6 @@ namespace Likvido.DbMigrator.EfCore;
 /// </code>
 /// </example>
 /// </summary>
-[PublicAPI]
 public static class MigrationsModelExtensions
 {
     /// <summary>

@@ -1,10 +1,10 @@
-using Likvido.DbMigrator.EfCore;
+using Likvido.EfCore.MigrationsModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Shouldly;
 using Xunit;
 
-namespace Likvido.DbMigrator.EfCore.Tests;
+namespace Likvido.EfCore.MigrationsModel.Tests;
 
 /// <summary>
 /// The property under test throughout: <c>UseMigrationsModel()</c> makes a context build its complete

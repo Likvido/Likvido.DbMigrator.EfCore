@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Likvido.DbMigrator.EfCore;
+namespace Likvido.EfCore.MigrationsModel;
 
 /// <summary>
 /// Marks a set of <see cref="DbContextOptions"/> as belonging to the migration path, so a context can

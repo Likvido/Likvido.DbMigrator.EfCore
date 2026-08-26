@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <Import Project="$(ProjectDir)../version.props" />
+
+  <!-- ⚠️ Entity Framework Core and nothing else, and that is the entire reason this package is separate
+       from Likvido.DbMigrator.EfCore. The gate this package exists to support has to be written in the
+       project that holds the DbContext - Likvido.Agents.Core, or a .Database project elsewhere in the
+       estate - and those projects cannot afford the migrator package: it depends on Likvido.Robot, which
+       brings Likvido.Telemetry, Grafana.OpenTelemetry and OpenTelemetry.Instrumentation.Wcf with it. In
+       Likvido.Agents that chain would land in the trigger API, the only deployable facing the internet.
+
+       So: do not add a dependency here. Anything that needs more than EF Core belongs in
+       Likvido.DbMigrator.EfCore, which depends on this one. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
+  </ItemGroup>
+
+</Project>

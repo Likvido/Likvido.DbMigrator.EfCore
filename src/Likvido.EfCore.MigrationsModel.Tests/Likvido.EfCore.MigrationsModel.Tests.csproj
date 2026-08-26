@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Likvido.DbMigrator.EfCore\Likvido.DbMigrator.EfCore.csproj" />
+    <ProjectReference Include="..\Likvido.EfCore.MigrationsModel\Likvido.EfCore.MigrationsModel.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,8 +15,7 @@
     <!-- ⚠️ `compile` is in the asset list, unlike the default this package documents. Its build props
          register GitHubActionsTestLogger.MtpIntegration as a Microsoft.Testing.Platform builder hook and
          xunit v3 generates a SelfRegisteredExtensions.cs naming that type, so without `compile` the build
-         fails with CS0400 pointing at obj/. Same combination as Likvido.Agents, which is verified against
-         likvido/action-test. -->
+         fails with CS0400 pointing at obj/. -->
     <PackageReference Include="GitHubActionsTestLogger" Version="3.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -8,14 +8,12 @@
 
   <Import Project="$(ProjectDir)../version.props" />
 
-  <!-- ⚠️ Entity Framework Core and nothing else, and that is the entire reason this package is separate
-       from Likvido.DbMigrator.EfCore. The gate this package exists to support has to be written in the
-       project that holds the DbContext - Likvido.Agents.Core, or a .Database project elsewhere in the
-       estate - and those projects cannot afford the migrator package: it depends on Likvido.Robot, which
-       brings Likvido.Telemetry, Grafana.OpenTelemetry and OpenTelemetry.Instrumentation.Wcf with it. In
-       Likvido.Agents that chain would land in the trigger API, the only deployable facing the internet.
+  <!-- ⚠️ Entity Framework Core and nothing else, and keeping it that way is the reason this package is
+       separate from Likvido.DbMigrator.EfCore. The gate it exists to support is written in whichever
+       project holds the DbContext, so this package is referenced by domain and application code rather
+       than by a migrator - and that code must not inherit a migration runner's dependencies.
 
-       So: do not add a dependency here. Anything that needs more than EF Core belongs in
+       So: do not add a dependency here, however small. Anything that needs more than EF Core belongs in
        Likvido.DbMigrator.EfCore, which depends on this one. -->
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />

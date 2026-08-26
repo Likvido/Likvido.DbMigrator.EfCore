@@ -31,10 +31,6 @@ jobs:
 
       # ⚠️ This one FIRST: Likvido.DbMigrator.EfCore takes a dependency on it, so publishing them the other
       # way round leaves a version of the migrator on nuget.org whose dependency does not exist yet.
-      #
-      # ⚠️ A new package id needs its own Trusted Publishing policy on nuget.org before this step can work -
-      # Likvido has no reserved prefix, so the policy cannot be inherited. Until an owner creates it, this
-      # step fails and the one below never runs.
       - name: Publish NuGet (Likvido.EfCore.MigrationsModel)
         uses: likvido/action-nuget@v2
         with:

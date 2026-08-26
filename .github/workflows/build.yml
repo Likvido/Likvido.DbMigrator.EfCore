@@ -1,8 +1,5 @@
 name: Build and test
 
-# The publish workflow only runs on a version.props change, so without this nothing ever compiled the
-# package on a pull request. That was tolerable while this was fifty lines of MigrateAsync; it is not now
-# that it ships model-building behaviour into every consumer.
 on:
   pull_request:
     branches:

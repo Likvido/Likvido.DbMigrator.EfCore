@@ -1,0 +1,33 @@
+name: Build and test
+
+# The publish workflow only runs on a version.props change, so without this nothing ever compiled the
+# package on a pull request. That was tolerable while this was fifty lines of MigrateAsync; it is not now
+# that it ships model-building behaviour into every consumer.
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.x
+
+      - name: Test
+        run: dotnet test src/Likvido.DbMigrator.EfCore.sln --configuration Release

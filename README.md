@@ -50,7 +50,6 @@ Likvido.Whatever.Database   -> Likvido.EfCore.MigrationsModel     (the gate)
 Likvido.Whatever.DbMigrator -> Likvido.DbMigrator.EfCore          (which depends on it)
 ```
 
-
 ```csharp
 // The context - one class, two models.
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -73,25 +72,38 @@ var builder = new DbContextOptionsBuilder<ThingContext>()
     .UseMigrationsModel();
 ```
 
-### The order of the steps, which is the opposite of EF6
+### The order of the steps does not matter
 
-Generate the migration **first**, while the property is still mapped in both models, and add the gated
-ignore **after**. Add the ignore first and the migration comes out empty.
+Write the gate and generate the migration in whichever order suits you. The migrations model skips the gate,
+so `dotnet ef migrations add` sees the property either way and produces the same migration. Verified both
+ways round against a real database.
+
+⚠️ **That holds only because the ignore is gated.** An *ungated* ignore hides the property from the
+migrations model too, so generating a migration after adding one produces an **empty** migration — the change
+you meant to make silently does not exist.
 
 ### Three things that will cost you a column
 
 - **Do not put the `Ignore` above the property's own `Property(...)` call.** The later mapping puts the
-  property back and nothing warns you. Gate it *after* the mapping.
+  property back and nothing warns you. Gate it *after* the mapping. The same applies to `Ignore<T>()` for a
+  whole entity: it goes after the `Entity<T>()` block, not before it.
 - **Do not leave the `Ignore` ungated.** An unconditional `Ignore` takes the column out of the migrations
   model too, so the next migration anyone generates — for something unrelated — diffs a model without the
   column against a snapshot with it and emits a `DropColumn`.
-- **Do not suppress `PendingModelChangesWarning`.** It is the check that catches a migration nobody
-  generated, and with a gated ignore there is nothing for it to complain about. It is also the backstop if
-  you forget `UseMigrationsModel()`: the migrations model then disagrees with its own snapshot and the
+- **Do not suppress `PendingModelChangesWarning`.** A gated ignore can no longer put the model and the
+  snapshot out of step, so it will not fire for that. When it does fire it means a migration is genuinely
+  missing, and the answer is to generate it rather than to switch the warning off. It is also the backstop
+  if you forget `UseMigrationsModel()`: the migrations model then disagrees with its own snapshot and the
   migrator refuses to run, instead of quietly applying the wrong thing.
 
 `UseMigrationsModel()` belongs in the design-time factory only. Calling it during application startup gives
 running code columns the database may not have yet, which is the failure the whole pattern exists to avoid.
+
+A worked cycle for each kind of change — adding a column, adding a table, adding an index, removing either,
+renaming, making a nullable column required — is in NewWiki at
+`developer-workflow/environment-and-setup/DATABASE_MIGRATIONS.md`. Worth knowing before reaching for the
+list: an index needs no gate and ships in one release, because application code never names it, so neither
+deploy order can break.
 
 ## Run migrations from Package Manager Console
 Since we often have more than one context we should be specific. Default project should be a project that contains the specified context.

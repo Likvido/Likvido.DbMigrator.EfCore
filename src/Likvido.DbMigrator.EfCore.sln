@@ -18,24 +18,64 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 		..\.github\workflows\nuget.yml = ..\.github\workflows\nuget.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Likvido.EfCore.MigrationsModel", "Likvido.EfCore.MigrationsModel\Likvido.EfCore.MigrationsModel.csproj", "{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Likvido.EfCore.MigrationsModel.Tests", "Likvido.EfCore.MigrationsModel.Tests\Likvido.EfCore.MigrationsModel.Tests.csproj", "{BA09DD06-CC10-4360-98F8-569F0A969B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Debug|x86.Build.0 = Debug|Any CPU
 		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|x64.Build.0 = Release|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{D0FF3DB1-DBE6-4741-959E-F3EAE40667FE}.Release|x86.Build.0 = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|x64.Build.0 = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Debug|x86.Build.0 = Debug|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|x64.ActiveCfg = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|x64.Build.0 = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{AA9005AD-6C00-464D-9024-3D1C2CEBDBD8}.Release|x86.Build.0 = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|x64.Build.0 = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Debug|x86.Build.0 = Debug|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|x64.ActiveCfg = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|x64.Build.0 = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|x86.ActiveCfg = Release|Any CPU
+		{BA09DD06-CC10-4360-98F8-569F0A969B06}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2C5E96FD-06B4-495B-9ACF-6093B0469BD2}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D726D989-1F86-4012-AC36-0149DA6964CF} = {BE8F196C-945E-4B16-A0B3-D974A09758D8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C5E96FD-06B4-495B-9ACF-6093B0469BD2}
 	EndGlobalSection
 EndGlobal

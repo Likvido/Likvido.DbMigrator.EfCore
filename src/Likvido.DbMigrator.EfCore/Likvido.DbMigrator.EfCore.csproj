@@ -13,4 +13,13 @@
     <PackageReference Include="Likvido.Robot" Version="2.3.38" />
   </ItemGroup>
 
+  <!-- The expand/contract helpers. They are a separate package because the gate is written in whichever
+       project holds the DbContext, and that code must not inherit this package's dependencies - see that
+       project for the rule. A ProjectReference rather than a PackageReference so a local build needs
+       nothing published; `dotnet pack` turns it into a package dependency at the same version, since both
+       projects import the one version.props. -->
+  <ItemGroup>
+    <ProjectReference Include="..\Likvido.EfCore.MigrationsModel\Likvido.EfCore.MigrationsModel.csproj" />
+  </ItemGroup>
+
 </Project>

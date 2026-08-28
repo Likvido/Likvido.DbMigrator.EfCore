@@ -53,10 +53,17 @@ Likvido.Whatever.DbMigrator -> Likvido.DbMigrator.EfCore          (which depends
 
 ```csharp
 // The design-time factory - used by the migrator and by `dotnet ef`, and by nothing else.
-var builder = new DbContextOptionsBuilder<ThingContext>()
-    .UseSqlServer(connectionString)
-    .UseMigrationsModel();
+public class ThingDesignTimeDbContextFactory : IDesignTimeDbContextFactory<ThingContext>
+{
+    public ThingContext CreateDbContext(string[] args) =>
+        new(new DbContextOptionsBuilder<ThingContext>()
+            .UseSqlServer(connectionString)
+            .UseMigrationsModel()
+            .Options);
+}
+```
 
+```csharp
 // The context - one class, two models. One call per member that is a release ahead of the code.
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -128,8 +135,10 @@ since a filter simply moved inside a gate would leave the application with no fi
 
 ### Two things that will still cost you a column
 
-- **Every mention of a gated member has to be inside its gate.** `MigrationsOnly` owns the order of the calls
-  it makes, which is why placement in `OnModelCreating` no longer matters; it cannot own calls it never sees.
+- **Every *mapping* of a gated member has to be inside its gate.** `MigrationsOnly` owns the order of the
+  calls it makes, which is why placement in `OnModelCreating` no longer matters; it cannot own calls it never
+  sees. (Ordinary code is a separate question: a gated table's `DbSet` and the navigations pointing at it
+  cannot go inside a gate, which is why they belong to the release that uses the table.)
   An index, key, relationship or `HasData` naming a gated member from outside its gate either does nothing at
   all (if it is above the gate) or puts the member straight back into the application model (if it is below).
   The overload taking a list of members exists so that all of it fits in one call.

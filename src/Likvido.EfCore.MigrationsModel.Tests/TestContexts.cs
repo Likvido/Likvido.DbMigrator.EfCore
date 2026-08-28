@@ -261,9 +261,10 @@ public class IndexInsideGateContext(DbContextOptions<IndexInsideGateContext> opt
 }
 
 /// <summary>
-/// ⚠️ A gated foreign key with the relationship configured outside the gate, above it. The ignore removes the
-/// CLR property, and EF then rebuilds the relationship over a shadow property with a uniquified name - so the
-/// application model does not lose the column, it renames it to one the database does not have.
+/// ⚠️ A gated foreign key with the relationship configured outside the gate, above it. The relationship has
+/// already mapped CustomerId explicitly, and an explicit mapping cannot be removed by ignoring it afterwards
+/// while a foreign key is still using it - so the gate does nothing at all, and the application model keeps
+/// the column, the foreign key and the navigation. EF reports it as MappedPropertyIgnoredWarning.
 /// </summary>
 public class ForeignKeyBeforeGateContext(DbContextOptions<ForeignKeyBeforeGateContext> options) : DbContext(options)
 {

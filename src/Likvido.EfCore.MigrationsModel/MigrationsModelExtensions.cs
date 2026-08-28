@@ -24,29 +24,29 @@ namespace Likvido.EfCore.MigrationsModel;
 /// a migration somebody forgot to generate.
 /// </para>
 /// <example>
-/// In the context, with the ignore gated:
-/// <code>
-/// protected override void OnModelCreating(ModelBuilder modelBuilder)
-/// {
-///     modelBuilder.Entity&lt;Thing&gt;(thing =>
-///     {
-///         thing.Property(x => x.NewColumn).HasMaxLength(50);
-///
-///         // ⚠️ AFTER the property's own mapping, never before it.
-///         if (!this.IsMigrationsModel())
-///         {
-///             thing.Ignore(x => x.NewColumn);
-///         }
-///     });
-/// }
-/// </code>
 /// In the design-time factory, which only the migrator and <c>dotnet ef</c> ever use:
 /// <code>
 /// var builder = new DbContextOptionsBuilder&lt;ThingContext&gt;()
 ///     .UseSqlServer(connectionString)
 ///     .UseMigrationsModel();
 /// </code>
+/// In the context, one call per gated member:
+/// <code>
+/// protected override void OnModelCreating(ModelBuilder modelBuilder)
+/// {
+///     modelBuilder.Entity&lt;Thing&gt;(thing =>
+///     {
+///         thing.MigrationsOnly(this, x => x.NewColumn, column => column.HasMaxLength(50));
+///     });
+/// }
+/// </code>
 /// </example>
+/// <para>
+/// <see cref="MigrationsOnlyExtensions"/> is what a caller writes. The condition it replaces is still public
+/// and still supported, for the one thing the gate cannot express — configuration that has to <em>differ</em>
+/// between the two models rather than be absent from one of them — but a gate written by hand has three ways
+/// to go wrong that a <c>MigrationsOnly</c> call does not.
+/// </para>
 /// </summary>
 public static class MigrationsModelExtensions
 {
@@ -81,8 +81,14 @@ public static class MigrationsModelExtensions
     }
 
     /// <summary>
-    /// True while this context is building the migrations model. Gate every expand/contract
-    /// <c>Ignore</c> on it, and place the gate after the property's own mapping.
+    /// True while this context is building the migrations model.
+    /// <para>
+    /// Prefer <see cref="MigrationsOnlyExtensions"/> for hiding a table or column from the application model:
+    /// it writes this condition for you, in the one order that works. Read the flag directly for configuration
+    /// that has to <em>differ</em> between the two models — a global query filter over a gated column is the
+    /// real example, because a filter simply moved inside a gate would leave the application with no filter at
+    /// all.
+    /// </para>
     /// <para>
     /// Safe to call from inside <c>OnModelCreating</c>, which is the only place it is meant to be called.
     /// </para>

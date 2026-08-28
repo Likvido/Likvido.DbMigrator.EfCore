@@ -26,5 +26,7 @@ jobs:
         with:
           dotnet-version: 10.x
 
+      # ⚠️ `--solution` is required: global.json opts this repo into the Microsoft.Testing.Platform
+      # runner, and that `dotnet test` rejects a bare solution path as a positional argument.
       - name: Test
-        run: dotnet test src/Likvido.DbMigrator.EfCore.sln --configuration Release
+        run: dotnet test --solution src/Likvido.DbMigrator.EfCore.sln --configuration Release

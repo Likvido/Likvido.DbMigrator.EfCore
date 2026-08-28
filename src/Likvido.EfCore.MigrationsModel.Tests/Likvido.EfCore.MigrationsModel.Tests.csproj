@@ -20,20 +20,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
-    <!-- ⚠️ Referenced only to lift a transitive version. xunit.v3 3.2.2 brings Microsoft.Testing.Platform
-         1.9.1 while GitHubActionsTestLogger 3.0.5's hook is compiled against 2.0.0, so the entry point xunit
-         generates fails with CS1705 on the mismatch. -->
-    <PackageReference Include="Microsoft.Testing.Platform" Version="2.3.3" />
     <!-- The provider the estate actually migrates against. No database is opened: every test here builds a
          model and inspects it, which EF does without connecting. -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.11" />
     <PackageReference Include="Shouldly" Version="4.3.0" />
     <PackageReference Include="xunit.v3" Version="4.0.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

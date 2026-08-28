@@ -57,8 +57,8 @@ public class ThingDesignTimeDbContextFactory : IDesignTimeDbContextFactory<Thing
 {
     public ThingContext CreateDbContext(string[] args) =>
         new(new DbContextOptionsBuilder<ThingContext>()
-            .UseSqlServer(connectionString)
-            .UseMigrationsModel()
+            .UseSqlServer(connectionString)   // however this repository already resolves it
+            .UseMigrationsModel()             // <- the only line this README is about
             .Options);
 }
 ```

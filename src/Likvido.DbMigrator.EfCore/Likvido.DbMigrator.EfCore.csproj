@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.0.23" />
-    <PackageReference Include="Likvido.Robot" Version="2.3.48" />
+    <PackageReference Include="Likvido.Robot" Version="2.3.49" />
   </ItemGroup>
 
   <!-- The expand/contract helpers. They are a separate package because the gate is written in whichever

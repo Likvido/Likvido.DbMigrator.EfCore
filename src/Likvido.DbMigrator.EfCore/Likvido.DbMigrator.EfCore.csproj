@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
+    <TargetFramework>net11.0</TargetFramework>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -11,6 +11,12 @@
   <ItemGroup>
     <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="2.1.0" />
     <PackageReference Include="Likvido.Robot" Version="2.4.0" />
+    <!-- AIKIDO-2026-11098: System.IdentityModel.Tokens.Jwt < 8.19.0 can parse stale ArrayPool bytes as
+         claims. Microsoft.Data.SqlClient 7 (via EF Core 11) brings in 8.16.0 through
+         Microsoft.IdentityModel.Protocols.OpenIdConnect, so pin both above the cutoff, together, to keep
+         the Microsoft.IdentityModel packages on one version. -->
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.23.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
   </ItemGroup>
 
   <!-- The expand/contract helpers. They are a separate package because the gate is written in whichever

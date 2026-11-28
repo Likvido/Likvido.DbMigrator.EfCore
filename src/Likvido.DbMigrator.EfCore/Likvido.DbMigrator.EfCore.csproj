@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Likvido.EfCore.SqlServerContextFactory" Version="3.0.0" />
-    <PackageReference Include="Likvido.Robot" Version="2.4.0" />
+    <PackageReference Include="Likvido.Robot" Version="3.0.3" />
     <!-- AIKIDO-2026-11098: System.IdentityModel.Tokens.Jwt < 8.19.0 can parse stale ArrayPool bytes as
          claims. Microsoft.Data.SqlClient 7 (via EF Core 11) brings in 8.16.0 through
          Microsoft.IdentityModel.Protocols.OpenIdConnect, so pin both above the cutoff, together, to keep
